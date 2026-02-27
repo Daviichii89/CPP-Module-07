@@ -3,7 +3,7 @@ CC     = c++
 NAME   = array
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -g
 
-# Sources (Array.tpp no se compila directamente: se incluye desde Array.hpp)
+# Sources and objects
 SRC = main.cpp
 OBJ = $(SRC:.cpp=.o)
 
