@@ -2,22 +2,22 @@
 #include <string>
 #include "iter.hpp"
 
-// --- Funciones de prueba ---
+// --- Test functions ---
 
-// Imprime cualquier elemento (toma por const ref: solo lectura)
+// Prints any element (takes by const ref: read-only)
 template <typename T>
 void printElem(T const& x)
 {
     std::cout << x << std::endl;
 }
 
-// Incrementa un entero (toma por ref no-const: modifica)
+// Increments an int (takes by non-const ref: modifies)
 void increment(int& x)
 {
     x += 1;
 }
 
-// Convierte un char a mayusculas (modifica)
+// Converts a char to uppercase (modifies)
 void toUpper(char& c)
 {
     if (c >= 'a' && c <= 'z')
@@ -26,27 +26,27 @@ void toUpper(char& c)
 
 int main(void)
 {
-    // Test 1: array de int con funcion template instanciada
+    // Test 1: int array with instantiated function template
     std::cout << "=== int array (print) ===" << std::endl;
     int nums[] = {1, 2, 3, 4, 5};
     ::iter(nums, 5, printElem<int>);
 
-    // Test 2: funcion que modifica los elementos
+    // Test 2: function that modifies the elements
     std::cout << "=== int array (increment) ===" << std::endl;
     ::iter(nums, 5, increment);
     ::iter(nums, 5, printElem<int>);
 
-    // Test 3: array de std::string
+    // Test 3: std::string array
     std::cout << "=== string array (print) ===" << std::endl;
     std::string words[] = {"hola", "mundo", "templates"};
     ::iter(words, 3, printElem<std::string>);
 
-    // Test 4: array const -> funcion que solo lee
+    // Test 4: const array -> function that only reads
     std::cout << "=== const int array (print) ===" << std::endl;
     const int consts[] = {10, 20, 30};
     ::iter(consts, 3, printElem<int>);
 
-    // Test 5: array de char con funcion que modifica
+    // Test 5: char array with function that modifies
     std::cout << "=== char array (toUpper) ===" << std::endl;
     char letters[] = {'a', 'b', 'c', 'd'};
     ::iter(letters, 4, toUpper);
